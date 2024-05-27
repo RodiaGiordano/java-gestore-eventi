@@ -17,6 +17,7 @@ public class Show{
         this.title = checkTitle(title);
         this.date = checkDate(date);
         this.PLACES_AVAILABLE = checkPlaces(placesAvailable);
+        // this.reservedSeats = 10;
         this.reservedSeats = 0;
     }
 

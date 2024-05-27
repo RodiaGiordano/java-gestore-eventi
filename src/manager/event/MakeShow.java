@@ -59,7 +59,9 @@ public class MakeShow {
         for(Show show : SHOWS){
             showsForDate.add(show);
         }
+
         Collections.sort(showsForDate, Comparator.comparing(Show::getDate));
+
         for(Show show : showsForDate){
             listOfShow.append("o ").append(show).append("\n");
         }

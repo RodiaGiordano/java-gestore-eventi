@@ -41,6 +41,10 @@ public class MusicalConcert extends Show{
         return String.format("Il prezzo del biglietto è: %.2f€", price);
     }
 
+    public LocalTime getTime(){
+        return time;
+    }
+
     public void setTime(LocalTime time){
 
         this.time = time;

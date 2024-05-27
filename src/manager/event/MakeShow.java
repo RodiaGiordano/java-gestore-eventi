@@ -1,9 +1,7 @@
 package manager.event;
 
-
-import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.time.LocalTime;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -60,10 +58,12 @@ public class MakeShow {
         StringBuilder listOfShow = new StringBuilder();
         for(Show show : SHOWS){
             showsForDate.add(show);
+        }
+        Collections.sort(showsForDate, Comparator.comparing(Show::getDate));
+        for(Show show : showsForDate){
             listOfShow.append("o ").append(show).append("\n");
         }
 
-        Collections.sort(showsForDate, Comparator.comparing(Show::getDate));
         return listOfShow.toString();
     }
 }

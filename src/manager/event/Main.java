@@ -71,13 +71,17 @@ public class Main {
             MusicalConcert prova = new MusicalConcert("Concerto Pop", LocalDate.of(2024, 06, 24), 10, LocalTime.of(18,00),big );
             MusicalConcert prova2 = new MusicalConcert("Concerto Rap", LocalDate.of(2025, 06, 24), 10, LocalTime.of(18,00),big );
             MusicalConcert prova3 = new MusicalConcert("Concerto Metal", LocalDate.of(2025, 02, 21), 10, LocalTime.of(18,00),big );
-            MusicalConcert prova4 =  new MusicalConcert("Concerto Metal", LocalDate.of(2025, 02, 21), 10, LocalTime.of(18,00),big );
+            MusicalConcert prova4 =  new MusicalConcert("Concerto Rock", LocalDate.of(2027, 02, 21), 10, LocalTime.of(18,00),big );
+            MusicalConcert prova5 =  new MusicalConcert("Concerto Funky", LocalDate.of(2025, 02, 3), 10, LocalTime.of(18,00),big );
 
 
 
             MakeShow makeShow = new MakeShow("prima lista");
             makeShow.addShow(prova);
             makeShow.addShow(prova2);
+            makeShow.addShow(prova3);
+            makeShow.addShow(prova4);
+            makeShow.addShow(prova5);
 
             System.out.println(makeShow.getSHOWS().size());
 

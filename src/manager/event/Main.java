@@ -18,6 +18,7 @@ public class Main {
             System.out.println("Inserisci il titolo");
             String title = scanner.nextLine();
 
+
             // la data è statica, troppi parse da fare, caso mai tornarci
 
             System.out.println("quanti posti avrà l'evento?");

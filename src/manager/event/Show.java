@@ -3,7 +3,6 @@ package manager.event;
 import manager.event.exceptions.PastDateException;
 import manager.event.exceptions.ValueToSmallException;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class Show {
@@ -17,7 +16,7 @@ public class Show {
         this.title = checkTitle(title);
         this.date = checkDate(date);
         this.PLACES_AVAILABLE = checkPlaces(placesAvailable);
-        this.reservedSeats = 0;
+        this.reservedSeats = 10;
     }
 
     private String checkTitle(String title)throws ValueToSmallException{
@@ -54,13 +53,14 @@ public class Show {
     }
 
     public int getReservedSeats(){
-        return getPlacesAvailable();
+        return reservedSeats;
     }
 
     public void setTitle(String newTitle)throws PastDateException{
 
         title = checkTitle(newTitle);
     }
+
 
     public void setDate(LocalDateTime newDate)throws PastDateException{
         date = checkDate(newDate);
@@ -71,14 +71,19 @@ public class Show {
         return res;
     }
 
+    public String getSetsRemain(){
+       return "Sono rimasti " + (getPlacesAvailable() - getReservedSeats());
+    }
+
     public String bookSeat(int placesToReserve)throws ValueToSmallException, PastDateException{
         if(!isValidDate()){
             throw new PastDateException("Lo spettacolo è nel passato..");
         } else if(getPlacesAvailable() - (getReservedSeats() + placesToReserve) < 0){
-            throw new ValueToSmallException("Non pouoi cancellare più posti di quanti siano prenotati");
+            throw new ValueToSmallException("Hai prenotato piu posti di quanti siano disponibili");
         }
 
-        checkPlaces(placesToReserve);
+         checkPlaces(placesToReserve);
+        reservedSeats = placesToReserve;
         return "Prenotazione di " + placesToReserve + " posti confermata!";
     }
 
@@ -90,7 +95,8 @@ public class Show {
             throw new ValueToSmallException("cancelli più posti di quanti siano prenotati");
         }
 
-        reservedSeats = checkPlaces(cancellationResevation) - cancellationResevation;
+        checkPlaces(cancellationResevation);
+        reservedSeats = cancellationResevation;
 
         return "Cancellazione di " + cancellationResevation + " posti confermata.";
     }
@@ -102,4 +108,3 @@ public class Show {
     }
 
 }
- // aggiungere eccezioni custom per bookSeat e cancellation

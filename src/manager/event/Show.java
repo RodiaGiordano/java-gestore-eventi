@@ -3,16 +3,17 @@ package manager.event;
 import manager.event.exceptions.PastDateException;
 import manager.event.exceptions.ValueToSmallException;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class Show {
 
     private String title;
-    private LocalDateTime date;
+    private LocalDate date;
     private final int PLACES_AVAILABLE;
     private int reservedSeats;
 
-    public Show(String title, LocalDateTime date, int placesAvailable)throws PastDateException, ValueToSmallException  {
+    public Show(String title, LocalDate date, int placesAvailable)throws PastDateException, ValueToSmallException  {
         this.title = checkTitle(title);
         this.date = checkDate(date);
         this.PLACES_AVAILABLE = checkPlaces(placesAvailable);
@@ -26,8 +27,8 @@ public class Show {
         return title;
     }
 
-    private LocalDateTime checkDate(LocalDateTime date)throws PastDateException{
-        if(date.isBefore(LocalDateTime.now())){
+    private LocalDate checkDate(LocalDate date)throws PastDateException{
+        if(date.isBefore(LocalDate.now())){
             throw new PastDateException("La data è nel passato..");
         }
         return date;
@@ -44,7 +45,7 @@ public class Show {
         return title;
     }
 
-    public LocalDateTime getDate(){
+    public LocalDate getDate(){
         return date;
     }
 
@@ -62,12 +63,12 @@ public class Show {
     }
 
 
-    public void setDate(LocalDateTime newDate)throws PastDateException{
+    public void setDate(LocalDate newDate)throws PastDateException{
         date = checkDate(newDate);
     }
 
     private boolean isValidDate(){
-        boolean res = date.isBefore(LocalDateTime.now()) ? false : true;
+        boolean res = date.isBefore(LocalDate.now()) ? false : true;
         return res;
     }
 
@@ -103,7 +104,7 @@ public class Show {
 
     @Override
     public String toString(){
-        String dateFormatter = date.toString().replace('T', ' ');
+        String dateFormatter = date.toString();
         return dateFormatter + " - " + title;
     }
 

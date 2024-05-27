@@ -4,9 +4,9 @@ import manager.event.exceptions.PastDateException;
 import manager.event.exceptions.ValueToSmallException;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
-public class Show {
+
+public class Show{
 
     private String title;
     private LocalDate date;
@@ -107,5 +107,4 @@ public class Show {
         String dateFormatter = date.toString();
         return dateFormatter + " - " + title;
     }
-
 }
